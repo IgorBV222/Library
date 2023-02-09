@@ -24,22 +24,25 @@ void Library::registredSubscriber(const Subscriber& sub){
 	std::cout << "Id: " << sub.getId() << " The subscriber " << sub.getName() << " is registered in the library!\n";
 }
 
-void Library::pop() {
+void Library::pop() {	
 	while (!_subs.empty()) {
-		Subscriber& sub = _subs.front();
-		std::string subBookWanted = sub.getBookWanted();			
-
+			Subscriber& sub = _subs.front();
+			bool found = false;
+			std::string subBookWanted = sub.getBookWanted();
 			for (auto it = _books.begin(); it != _books.end(); it++) {
 				if (it->second.getTitle() == subBookWanted) {
 					std::cout << "The book '" << subBookWanted << "' issued to the subscriber " << sub.getName() << "\n";
 					_books.erase(it);
 					_subs.pop();
-					return;
-				}
+					found = true;
+					break;
+				}							
 			}
-			std::cout << "The book '" << subBookWanted << "' requested by the subscriber " << sub.getName() << " is not in the library!" << "\n";
-			_subs.pop();
-	}	
+			if(!found){
+				std::cout << "The book '" << subBookWanted << "' requested by the subscriber " << sub.getName() << " is not in the library!" << "\n";
+				_subs.pop();			
+			}	
+	}
 }
 
 void Library::showBooks(){
@@ -50,11 +53,16 @@ void Library::showBooks(){
 
 
 
-void Library::showSubscriber() {		
-	Subscriber& sub = _subs.front();
-	while (_subs.empty()) {
-		std::cout << "Id: " << ID_SUBSCRIBER << " Subscriber name: " << sub.getName() << std::endl;
+/*void Library::showSubscriber() {
+	
+	while (!_subs.empty()) {
+		Subscriber& sub = _subs.front();
+		for (auto it = 0; it < _subs.size(); it++) {
+			
+			std::cout << "Id: " << ID_SUBSCRIBER << " Subscriber name: " << sub.getName() << std::endl;
+		}		
 		return;				
 	}			
-}
+	
+}*/
 	

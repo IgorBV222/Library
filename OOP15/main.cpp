@@ -15,11 +15,11 @@ int main()
     Book b3 (2003, "Roberts Gregory David", "Shantaram", " ");
     Book b4 (2007, "Leo Tolstoy", "War and Peace", " ");
 
-    Subscriber sub1 ("Ivan", "Shantaram");
+    Subscriber sub1 ("Ivan", "The Mumu"); 
     Subscriber sub2 ("Bills", "The Master and Margarita");
     Subscriber sub3 ("Alis", "The wind-up bird chronicle");
     Subscriber sub4 ("Tom", "The Master and Margarita");
-    Subscriber sub5 ("Bob", "The Mumu");
+    Subscriber sub5 ("Bob", "Shantaram");
 
 
     Library lib1("MyLibrary");
@@ -42,19 +42,9 @@ int main()
     std::cout << "\tList of books in the library:\n";
     lib1.showBooks();
     std::cout << "=================================\n";
-
     
-    std::cout << "\tLending books from the library:\n";
-   
-   /*do {
-        lib1.pop();       
-   } while (true);*/
-
-   while (true) {
-       lib1.pop();
-   }
-
-    
+    std::cout << "\tLending books from the library:\n";        
+    lib1.pop();   
     std::cout << "=================================\n";
 
     std::cout << "List of remaining books in the library:\n";
